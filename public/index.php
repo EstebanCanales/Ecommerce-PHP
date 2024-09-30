@@ -2,7 +2,6 @@
 session_start();
 require_once '../includes/config.php';
 
-// Obtener productos de la base de datos
 $sql = "SELECT * FROM products";
 $result = $conn->query($sql);
 $products = [];
@@ -22,7 +21,7 @@ function getCartItemsCount() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Tienda</title>
+    <title>Silk road</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen flex flex-col bg-gray-100">
@@ -30,7 +29,7 @@ function getCartItemsCount() {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="index.php" class="text-xl font-bold text-gray-800">Mi Tienda</a>
+                    <a href="index.php" class="text-xl font-bold text-gray-800">Silk road</a>
                 </div>
                 <nav class="hidden md:flex space-x-10">
                     <a href="index.php" class="text-base font-medium text-gray-500 hover:text-gray-900">Productos</a>
@@ -82,8 +81,9 @@ function getCartItemsCount() {
 
     <footer class="bg-gray-800">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-base text-gray-400">
-                &copy; <?php echo date('Y'); ?> Mi Tienda. Todos los derechos reservados.
+						<p class="text-center text-base text-gray-400">
+               <!-- Yo quiero esto en react -->
+                &copy; <?php echo date('Y'); ?> Silk road. Todos los derechos reservados.
             </p>
         </div>
     </footer>

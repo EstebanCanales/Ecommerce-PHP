@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Mi Tienda</title>
+    <title>Iniciar Sesión - silk road</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen flex items-center justify-center bg-gray-100">

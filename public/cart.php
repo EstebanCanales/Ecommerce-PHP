@@ -12,6 +12,8 @@ if (!isset($_SESSION['cart'])) {
 }
 
 // Manejar la acción de añadir al carrito
+// 1. Que mrd 
+// 2. SQL deberia tener esto nativo
 if (isset($_POST['add_to_cart'])) {
     $product_id = $_POST['product_id'];
     if (isset($_SESSION['cart'][$product_id])) {
@@ -21,7 +23,7 @@ if (isset($_POST['add_to_cart'])) {
     }
 }
 
-// Procesar la compra
+// Funcion de compra
 if (isset($_POST['checkout'])) {
     $total_amount = 0;
     foreach ($_SESSION['cart'] as $product_id => $quantity) {
@@ -34,14 +36,14 @@ if (isset($_POST['checkout'])) {
         $total_amount += $product['price'] * $quantity;
     }
 
-    // Crear la orden
+		// Funcion de orden
     $sql = "INSERT INTO orders (user_id, total_amount) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("id", $_SESSION['user_id'], $total_amount);
     $stmt->execute();
     $order_id = $stmt->insert_id;
 
-    // Insertar los items de la orden
+    // Funcion de insertar los items de la orden
     foreach ($_SESSION['cart'] as $product_id => $quantity) {
         $sql = "SELECT price FROM products WHERE id = ?";
         $stmt = $conn->prepare($sql);
@@ -56,12 +58,10 @@ if (isset($_POST['checkout'])) {
         $stmt->execute();
     }
 
-    // Limpiar el carrito
     $_SESSION['cart'] = [];
     $message = "¡Compra realizada con éxito! Número de orden: " . $order_id;
 }
 
-// Obtener los productos en el carrito
 $cart_items = [];
 $total = 0;
 foreach ($_SESSION['cart'] as $product_id => $quantity) {
@@ -82,7 +82,7 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito - Mi Tienda</title>
+    <title>Carrito - Silk road</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen flex flex-col bg-gray-100">
@@ -90,7 +90,7 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="index.php" class="text-xl font-bold text-gray-800">Mi Tienda</a>
+                    <a href="index.php" class="text-xl font-bold text-gray-800">Silk road</a>
                 </div>
                 <nav class="hidden md:flex space-x-10">
                     <a href="index.php" class="text-base font-medium text-gray-500 hover:text-gray-900">Productos</a>
@@ -174,7 +174,7 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
     <footer class="bg-gray-800">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <p class="text-center text-base text-gray-400">
-                &copy; <?php echo date('Y'); ?> Mi Tienda. Todos los derechos reservados.
+                &copy; <?php echo date('Y'); ?> Silk road. Todos los derechos reservados.
             </p>
         </div>
     </footer>

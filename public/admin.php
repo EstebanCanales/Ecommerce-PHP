@@ -2,13 +2,12 @@
 session_start();
 require_once '../includes/config.php';
 
-// Verificar si el usuario es admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit();
 }
 
-// Obtener estadísticas
+// Asi se hacen bien la sql querys 
 $sql = "SELECT COUNT(*) as total_orders, SUM(total_amount) as total_revenue FROM orders";
 $result = $conn->query($sql);
 $stats = $result->fetch_assoc();
@@ -21,7 +20,6 @@ $sql = "SELECT COUNT(*) as total_users FROM users WHERE role = 'user'";
 $result = $conn->query($sql);
 $user_stats = $result->fetch_assoc();
 
-// Obtener las últimas 5 órdenes
 $sql = "SELECT o.id, o.total_amount, o.created_at, u.username FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.created_at DESC LIMIT 5";
 $result = $conn->query($sql);
 $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
@@ -32,7 +30,7 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Mi Tienda</title>
+    <title>Panel de Administración - Silk road</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-100">
@@ -40,7 +38,7 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-6">
                 <div class="flex items-center">
-                    <a href="index.php" class="text-xl font-bold text-gray-800">Mi Tienda</a>
+                    <a href="index.php" class="text-xl font-bold text-gray-800">Silk road</a>
                     <a href="admin.php" class="ml-4 text-gray-500 hover:text-gray-700">Admin</a>
                 </div>
                 <a href="logout.php" class="text-red-600 hover:text-red-800">Cerrar sesión</a>

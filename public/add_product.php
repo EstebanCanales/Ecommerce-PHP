@@ -3,6 +3,9 @@ session_start();
 require_once '../includes/config.php';
 
 // Verificar si el usuario es admin
+// Mae no se si esto se puede hacer 
+//
+// Si funciono no tiene sentido
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit();
