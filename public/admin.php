@@ -27,19 +27,20 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Silk road</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
+
 <body class="min-h-screen bg-gray-100">
     <nav class="bg-white shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-6">
                 <div class="flex items-center">
-                    <a href="index.php" class="text-xl font-bold text-gray-800">Silk road</a>
-                    <a href="admin.php" class="ml-4 text-gray-500 hover:text-gray-700">Admin</a>
+                    <a href="index.php" class="text-xl font-bold text-gray-800"><img src="../images/Silk Road Logo.png" class="w-auto h-12"></a> <a href="admin.php" class="ml-4 text-gray-500 hover:text-gray-700">Admin</a>
                 </div>
                 <a href="logout.php" class="text-red-600 hover:text-red-800">Cerrar sesión</a>
             </div>
@@ -48,7 +49,7 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
 
     <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-gray-900 mb-8">Panel de Administración</h1>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="px-4 py-5 sm:p-6">
@@ -108,20 +109,20 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <?php foreach ($recent_orders as $order): ?>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <?php echo $order['id']; ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <?php echo htmlspecialchars($order['username']); ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                $<?php echo number_format($order['total_amount'], 2); ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <?php echo $order['created_at']; ?>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <?php echo $order['id']; ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <?php echo htmlspecialchars($order['username']); ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    $<?php echo number_format($order['total_amount'], 2); ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <?php echo $order['created_at']; ?>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -138,22 +139,22 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
                 <form action="add_product.php" method="POST" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Nombre del Producto</label>
-                        <input type="text" name="name" id="name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="text" name="name" id="name" required class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
-                        <textarea name="description" id="description" rows="3" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                        <textarea name="description" id="description" rows="3" required class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                     </div>
                     <div>
                         <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
-                        <input type="number" name="price" id="price" step="0.01" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="number" name="price" id="price" step="0.01" required class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700">URL de la Imagen</label>
-                        <input type="url" name="image" id="image" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="url" name="image" id="image" required class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div>
-                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                             Añadir Producto
                         </button>
                     </div>
@@ -162,4 +163,5 @@ $recent_orders = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </main>
 </body>
+
 </html>
