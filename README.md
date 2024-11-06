@@ -1,4 +1,8 @@
-# ecommerce-php
+# Ecommerce-php
+
+
+Tablas SLQ
+
 ```sql
 CREATE DATABASE ecommerce;
 USE ecommerce;
@@ -38,6 +42,7 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
 ```
+Estructura de folders
 
 ```bash 
 /ecommerce-php
